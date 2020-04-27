@@ -1,0 +1,12 @@
+goals =
+    gather weather data for cities inside of a set of coords (lat , lon)
+    
+    calculate from the gathered data =
+        - highest/lowest/avg for =
+            - max/min temp & feels like
+            - humidity
+        
+        - cloud coverage
+        - avg visibility
+        - wind speed
+        
