@@ -3,10 +3,17 @@ goals =
     
     calculate from the gathered data =
         - highest/lowest/avg for =
-            - max/min temp & feels like
+            - max/min/current temp & feels like
             - humidity
         
         - cloud coverage
         - avg visibility
         - wind speed
+        - pressure
         
+        
+        
+
+USA lat/lng constraints :
+    lat = 19.50139 to 64.85694 
+    lng = -161.75583 to -68.01197
