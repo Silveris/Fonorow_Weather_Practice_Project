@@ -15,12 +15,22 @@ import datetime
 
 # Save a Pandas DF to a csv with a timestamp on it
 # you nees a base path, the dataframe and the name you want thefile to be called
-def saveTimeStamped(df, base_path, name):
+def saveCSVTimeStamped(df, base_path, name):
+    '''
+    Summary :
+        Saves a Pandas DF with the current Y-M-D timestamped csv file
+        
+    Params :
+        df = the dataframe to save
+        base_path = the path to the folder you want to save it in
+        name = the name you want the file to be saved as
+    '''
     name = '/' + name
     time_stamp = datetime.date.today()
     file_name = f'{name}_{time_stamp}'
     outpath = base_path + file_name
     df.to_csv(outpath, index=False)
+    return
     
 
 # using a dict of lists for lats and lngs, it makes a list of city names
@@ -48,7 +58,7 @@ def makeCitiesList(country_coords):
             cities.append(city)
 
     # Print the city count to confirm sufficient count
-    len(cities)
+    print(f'Cities in list : {len(cities)}')
     return(cities)
 
 
@@ -119,7 +129,35 @@ def collectData(cities, filename):
         'Pressure' : pressures}
 
     base_df = pd.DataFrame(base_df_dict)
-    usa_base_df = base_df[base_df['Country'] == 'US'].reset_index(drop=True)
-    usa_base_df
     
     saveTimeStamped(df=base_df, base_path=out_table_path_base, name=filename)
+    return
+
+#
+
+# Makes a dir of the current days date
+def mk_Tstmp_dir(path):
+    '''
+    Summary : 
+        Checks if the pathed file contains a current dated file
+        if there isnt one, it makes one.
+    
+    Params : 
+        path = path to the file you want to make the directory in
+    '''
+    # makes the timestamp
+    time_stamp = datetime.date.today()
+    dir_path = os.path.join(path, str(time_stamp))
+    
+    # Checks and makes Folder
+    if not os.path.isdir(dir_path):
+        print('Folder not found. attempting to make')
+        os.mkdir(dir_path)
+    else:
+        print(f'Folder already exists. path : {dir_path}')
+    
+    return
+#
+
+
+
